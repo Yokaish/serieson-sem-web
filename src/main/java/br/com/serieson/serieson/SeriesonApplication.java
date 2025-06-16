@@ -1,8 +1,6 @@
 package br.com.serieson.serieson;
 
-import br.com.serieson.serieson.model.DadosSerie;
-import br.com.serieson.serieson.service.ConsumoAPI;
-import br.com.serieson.serieson.service.ConverteDados;
+import br.com.serieson.serieson.principal.Principal;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,16 +14,9 @@ public class SeriesonApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		//consome qualquer api, vai sempre buscar a informaçao
-		var consumoAPI = new ConsumoAPI();
 
-		var json = consumoAPI.obterDados("https://www.omdbapi.com/?t=gilmore+girls&apikey=b7c42289");
-		System.out.println(json);
-
-		ConverteDados conversor = new ConverteDados();
-		DadosSerie dados = conversor.obterDados(json, DadosSerie.class);
-		System.out.println(dados);
-
+		Principal principal = new Principal();
+		principal.exibeMenu();
 
 	}
 }
